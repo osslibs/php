@@ -7,3 +7,12 @@
 [submodule "osslibs/http"]
 	path = osslibs/http
 	url = git@github.com:osslibs/http.php.git
+[submodule "osslibs/http-curl"]
+	path = osslibs/http-curl
+	url = git@github.com:osslibs/http-curl.php.git
+[submodule "osslibs/http-facade"]
+	path = osslibs/http-facade
+	url = git@github.com:osslibs/http-facade.php.git
+[submodule "osslibs/uri"]
+	path = osslibs/uri
+	url = git@github.com:osslibs/uri.php.git
