@@ -1,0 +1,60 @@
+{
+    "name": "osslibs/php",
+    "require": {
+        "osslibs/curl": "dev-main",
+        "osslibs/curl-facade": "dev-main",
+        "osslibs/http": "dev-main",
+        "osslibs/http-curl": "dev-main",
+        "osslibs/http-facade": "dev-main",
+        "osslibs/uri": "dev-main"
+    },
+    "require-dev": {
+        "mockery/mockery": "*",
+        "phpunit/phpunit": "*"
+    },
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "osslibs/curl",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "osslibs/curl-facade",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "osslibs/http",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "osslibs/http-curl",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "osslibs/http-facade",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "osslibs/uri",
+            "options": {
+                "symlink": true
+            }
+        }
+    ]
+}
