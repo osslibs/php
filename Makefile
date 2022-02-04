@@ -8,28 +8,27 @@ COMPOSER_PHAR=composer.phar
 COMPOSER_JSON=composer.json
 
 PACKAGES:=$(shell find osslibs/* -maxdepth 0 -type d)
-PACKAGES_SRC:=$(addsufix /src, $(shell find osslibs/* -maxdepth 0 -type d))
-PACKAGES_TESTS:=$(addsufix /tests, $(shell find osslibs/* -maxdepth 0 -type d))
+PACKAGES_SRC:=$(addsuffix /src, $(PACKAGES))
+PACKAGES_TESTS:=$(addsuffix /tests, $(PACKAGES))
 
 VENDOR=vendor
 
 .PHONY: test
-test: $(PACKAGES)
+test: $(PACKAGES) $(PACKAGES_TESTS)
 
 .PHONY: clean
 clean:
 	rm --preserve-root -rf ./$(COMPOSER_PHAR) ./$(VENDOR)
 
-.PHONY: $(PACKAGES)
-$(PACKAGES): $(PACKAGES_TESTS) $(PHPUNIT)
-	$(PHPUNIT) $@/tests
+$(PACKAGES):
+	git submodule init $@
+	git submodule update $@
 
-$(PACKAGES_TESTS):
-	git submodule init
-	git submodule update
+.PHONY: $(PACKAGES_TESTS)
+$(PACKAGES_TESTS): $(PACKAGES) $(PHPUNIT)
+	$(PHPUNIT) $@
 
-$(PHPUNIT) $(VENDOR):
-	make $(COMPOSER_JSON)
+$(PHPUNIT) $(VENDOR): $(COMPOSER_PHAR)
 	$(PHP) $(COMPOSER_PHAR) install --dev
 
 $(COMPOSER_JSON):
