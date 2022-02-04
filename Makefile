@@ -16,7 +16,7 @@ test: $(PACKAGES)
 
 .PHONY: clean
 clean:
-	echo $(addprefix ./, $(shell cat .gitignore))
+	rm --preserve-root -rf ./$(COMPOSER_PHAR) ./$(VENDOR)
 
 .PHONY: $(PACKAGES)
 $(PACKAGES): $(PHPUNIT)
