@@ -14,13 +14,13 @@ PACKAGES_TESTS:=$(addsuffix /tests, $(PACKAGES))
 VENDOR=vendor
 
 .PHONY: test
-test: $(PACKAGES) $(PACKAGES_TESTS)
+test: $(PACKAGES_SRC) $(PACKAGES_TESTS)
 
 .PHONY: clean
 clean:
 	rm --preserve-root -rf ./$(COMPOSER_PHAR) ./$(VENDOR)
 
-$(PACKAGES):
+$(PACKAGES_SRC):
 	git submodule init $@
 	git submodule update $@
 
