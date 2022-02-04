@@ -14,6 +14,10 @@ VENDOR=vendor
 .PHONY: test
 test: $(PACKAGES)
 
+.PHONY: clean
+clean:
+	echo $(addprefix ./, $(shell cat .gitignore))
+
 .PHONY: $(PACKAGES)
 $(PACKAGES): $(PHPUNIT)
 	$(PHPUNIT) $@/tests
