@@ -21,8 +21,8 @@ clean:
 	rm --preserve-root -rf ./$(COMPOSER_PHAR) ./$(VENDOR)
 
 $(PACKAGES_SRC):
-	git submodule init $@
-	git submodule update $@
+	git submodule init $(dirname $@)
+	git submodule update $(dirname $@)
 
 .PHONY: $(PACKAGES_TESTS)
 $(PACKAGES_TESTS): $(PACKAGES) $(PHPUNIT)
