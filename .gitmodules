@@ -1,0 +1,6 @@
+[submodule "osslibs/curl"]
+	path = osslibs/curl
+	url = git@github.com:osslibs/curl.php.git
+[submodule "osslibs/curl-facade"]
+	path = osslibs/curl-facade
+	url = git@github.com:osslibs/curl-facade.php.git
