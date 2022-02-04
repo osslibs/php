@@ -21,12 +21,18 @@ clean:
 	rm --preserve-root -rf ./$(COMPOSER_PHAR) ./$(VENDOR)
 
 $(PACKAGES_SRC):
-	git submodule init $(dirname $@)
-	git submodule update $(dirname $@)
+	git submodule init $(dir $@)
+	git submodule update $(dir $@)
 
 .PHONY: $(PACKAGES_TESTS)
 $(PACKAGES_TESTS): $(PACKAGES) $(PHPUNIT)
-	$(PHPUNIT) $@
+	@echo "================================================================================"
+	@echo "TESTING $@"
+	@echo "--------------------------------------------------------------------------------"
+	$(PHPUNIT) $@ --colors
+	@echo "================================================================================"
+	@echo ""
+	@echo ""
 
 $(PHPUNIT) $(VENDOR): $(COMPOSER_PHAR)
 	$(PHP) $(COMPOSER_PHAR) install --dev
